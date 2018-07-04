@@ -1,0 +1,17 @@
+<h1>Flight Search Page</h1>
+
+<%= form_for(@flight, url: flights_path, method: :get) do |f| %>
+	<%= f.label "From" %>
+	<%= f.collection_select(:from_airport_id, Airport.all, :id, :name) %>
+
+	<%= f.label "To" %>
+	<%= f.collection_select(:to_airport_id, Airport.all, :id, :name) %>
+
+	<%= f.label "Passenger count" %>
+	<%= select_tag :passenger_count, options_for_select(1..4) %>
+
+	<%= f.label "Departure date" %>
+	<%= select_tag :departure_date, options_for_select(@flight_dates) %>
+
+	<%= f.submit "Search flights!" %>
+<% end %>
