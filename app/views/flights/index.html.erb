@@ -1,5 +1,6 @@
 <h1>Flight Search Page</h1>
 
+
 <%= form_for(@flight, url: flights_path, method: :get) do |f| %>
 	<%= f.label "From" %>
 	<%= f.collection_select(:from_airport_id, Airport.all, :id, :name) %>
@@ -11,7 +12,14 @@
 	<%= select_tag :passenger_count, options_for_select(1..4) %>
 
 	<%= f.label "Departure date" %>
-	<%= select_tag :departure_date, options_for_select(@flight_dates) %>
+	<%= select_tag :departure_date, options_from_collection_for_select(Flight.get_takeoffs, 'takeoff', :takeoff_formatted) %>
 
 	<%= f.submit "Search flights!" %>
 <% end %>
+
+<% unless @available_flights.nil? %>
+	<h3> Available Flights </h3>
+	<hr>
+	<%= render partial: 'flight', collection: @available_flights %>
+<% end %>
+
