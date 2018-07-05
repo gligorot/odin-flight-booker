@@ -10,7 +10,7 @@ class Flight < ApplicationRecord
 	end
 	
 	def self.get_takeoffs
-		Flight.all.where("takeoff >= ?", DateTime.now).distinct.order(takeoff: :asc).pluck('date(takeoff)')
+		Flight.all.where("takeoff >= ?", DateTime.now).distinct.pluck('date(takeoff)').sort
 	end
 
 	def parse_airport(action)
