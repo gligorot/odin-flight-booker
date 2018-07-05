@@ -1,8 +1,8 @@
 <h1>Flight Search Page</h1>
 
-<% if Rails.env.production? %>
-	<strong ><p> For testing use > from JFK to SF Intl, departure date 2021-07-05 </p></strong>
-<% end %>
+
+<strong ><p> For testing use > from JFK to SF Intl, departure date 2021-07-05 </p></strong>
+
 
 
 <%= form_for(@flight, url: flights_path, method: :get) do |f| %>

@@ -20,3 +20,8 @@ end
 								 takeoff:        Faker::Time.between(Date.tomorrow, 10.days.from_now,),
 								 duration: 360)
 end
+
+Flight.create!(to_airport_id: 		 1,
+								 from_airport_id:  3,
+								 takeoff:        Faker::Time.between(3.years.from_now, 3.years.from_now + 1.hour),
+								 duration: 360)
