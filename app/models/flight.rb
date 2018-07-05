@@ -2,6 +2,9 @@ class Flight < ApplicationRecord
 	belongs_to :from_airport, class_name: "Airport"
 	belongs_to :to_airport, 	class_name: "Airport"
 
+	has_many :bookings
+	has_many :passengers, through: :bookings
+
 	def takeoff_formatted
 		self.takeoff.strftime("%m/%d/%Y") #self.takeoff fk me
 	end

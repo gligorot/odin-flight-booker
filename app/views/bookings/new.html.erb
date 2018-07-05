@@ -1,2 +1,20 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>Flight booking form</h1>
+
+<%= form_for @booking do |f| %>
+	<h4> Flight Information: </h4>
+	<p> <%= "#{flight_info(Flight.find(params[:flight_id]))}" %> </p>
+	<%= f.hidden_field(:flight_id, value: params[:flight_id]) %>
+	<%= f.hidden_field(:pass_count, value: params[:passenger_count]) %>
+
+	<h4> Passenger Information: </h4>
+	<ol>
+			<%= f.fields_for :passengers do |passenger| %>
+			<li>
+				<%= passenger.text_field :name , placeholder: "Name" %>
+				<%= passenger.text_field :email, placeholder: "Email" %>
+			</li>	
+			<% end %>
+	</ol>
+
+	<%= f.submit "Book Flight!" %>
+<% end %>
