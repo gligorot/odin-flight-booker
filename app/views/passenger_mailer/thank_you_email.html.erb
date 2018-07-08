@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for your ticket reservation <%= @main_passenger.name.capitalize %>!</h1>
+
+    <hr>
+      <h4> Flight Information: </h4>
+      <p> <%= "#{flight_info(@booking.flight)}" %> </p>
+
+      <h4> Passenger Information: </h4>
+      <ol>
+       <% @booking.passengers.each do |p| %>
+          <li>
+            <p> <strong>Name:</strong> <%= p.name %> | <strong>Email:</strong> <%= p.email %> </p>
+          </li> 
+        <% end %>
+      </ol>
+    <hr>
+
+    <p>
+      To review it directly on the website, click on this link: <%= link_to 'booking info', @url %>.
+    </p>
+    <p>Thanks for trusting us and have a great day!</p>
+  </body>
+</html>

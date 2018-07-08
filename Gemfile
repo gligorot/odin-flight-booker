@@ -41,6 +41,7 @@ group :development, :test do
   gem 'selenium-webdriver'
 
   gem 'sqlite3'
+  gem 'letter_opener'
 end
 
 group :development do

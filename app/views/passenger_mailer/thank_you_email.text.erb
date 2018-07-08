@@ -1,0 +1,13 @@
+Thanks for your ticket reservation <%= @main_passenger.name.capitalize %>!
+=====================================================
+Flight Information:
+	<%= "#{flight_info(@booking.flight)}" %>
+
+Passenger Information:
+	<% @booking.passengers.each do |p| %>
+		Name: <%= p.name %> | Email: <%= p.email %>
+	<% end %>
+
+To review it directly on the website, please follow this url: <%= @url %>.
+=====================================================
+Thanks for trusting us and have a great day!

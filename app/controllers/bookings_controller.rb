@@ -7,7 +7,9 @@ class BookingsController < ApplicationController
   def create
   	@booking = Booking.new(booking_params)
   	if @booking.save
-  		flash[:sucess] = "Flight successfully booked!"
+      PassengerMailer.with(booking: @booking).thank_you_email.deliver_now
+  		flash[:sucess] = "Flight successfully booked! The first passenger will 
+                        receive an email with the booking information"
   		redirect_to @booking
   	else
   		flash.now[:danger] = "Error!"
